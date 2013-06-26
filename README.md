@@ -1,4 +1,6 @@
-wetkit-images
-=============
+WetKit Images
+===============
+Provides common image styles and image related functionality.
 
-Images Configuration for Drupal WEM.
+Key Features
+* Custom Image Styles for WetKit
