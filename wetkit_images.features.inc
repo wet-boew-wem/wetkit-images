@@ -57,6 +57,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 3,
       ),
     ),
+    'label' => 'wetkit_image_featured',
   );
 
   // Exported image style: wetkit_image_full.
@@ -80,6 +81,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'wetkit_image_full',
   );
 
   // Exported image style: wetkit_image_half.
@@ -103,6 +105,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'wetkit_image_half',
   );
 
   // Exported image style: wetkit_image_quarter.
@@ -126,6 +129,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'wetkit_image_quarter',
   );
 
   // Exported image style: wetkit_image_spotlight.
@@ -148,6 +152,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 2,
       ),
     ),
+    'label' => 'wetkit_image_spotlight',
   );
 
   // Exported image style: wetkit_image_square.
@@ -170,6 +175,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'wetkit_image_square',
   );
 
   // Exported image style: wetkit_image_thumbnail.
@@ -193,6 +199,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'wetkit_image_thumbnail',
   );
 
   // Exported image style: wetkit_image_video.
@@ -215,6 +222,7 @@ function wetkit_images_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'wetkit_image_video',
   );
 
   return $styles;
