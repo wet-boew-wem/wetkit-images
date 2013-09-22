@@ -7,34 +7,40 @@
 include_once 'wetkit_images.features.inc';
 
 /**
- * Implementation of hook_init().
+ * Implements hook_init().
  */
 function wetkit_images_init() {
-  // Adding the wetkit images file to the theme so it will show up in the WYSIWYG.
+  // Adding the wetkit images file to theme so it will show up in the WYSIWYG.
   drupal_add_css(drupal_get_path('module', 'wetkit_images') . '/wetkit_images.css', array('group' => CSS_THEME));
 }
 
 /**
- * Implementation of drupal_alter() for media_wysiwyg_allowed_view_modes.
+ * Implements drupal_alter() for media_wysiwyg_allowed_view_modes.
  */
 function wetkit_images_media_wysiwyg_allowed_view_modes_alter(&$options, $context) {
 
-  // Relabel some options
+  // Relabel some options.
   $options['default']['label'] = t('Original Size');
   $options['teaser']['label'] = t('Quarter Size');
   $options['preview']['label'] = t('Thumbnail');
 }
 
 /**
- * Implementation of hook_form_alter().
+ * Implements hook_form_alter().
  */
 function wetkit_images_form_alter(&$form, &$form_state, $form_id) {
 
   // Remove some necessary image styles.
   if ($form_id == 'ctools_entity_field_content_type_formatter_styles') {
     if (!empty($form['image_style']['#options'])) {
-      $styles_to_remove = array('apps_logo', 'apps_logo_small', 'apps_screenshot', 'apps_featured_screenshot', 'linkit_thumb');
-      foreach($styles_to_remove as $style_name) {
+      $styles_to_remove = array(
+        'apps_logo',
+        'apps_logo_small',
+        'apps_screenshot',
+        'apps_featured_screenshot',
+        'linkit_thumb',
+      );
+      foreach ($styles_to_remove as $style_name) {
         if (!empty($form['image_style']['#options'][$style_name])) {
           unset($form['image_style']['#options'][$style_name]);
         }
@@ -47,15 +53,20 @@ function wetkit_images_form_alter(&$form, &$form_state, $form_id) {
     $form['upload']['#size'] = 30;
   }
 
-  // Warm the image style cache by preloading some images. This is needed when the images are
-  // added in the WYSIWYG so they will be fully rendered and can be sized on insert.
+  // Warm the image style cache by preloading some images.
+  // This is needed when the images are added in the WYSIWYG so
+  // they will be fully rendered and can be sized on insert.
   if ($form_id == 'media_format_form') {
     $form['preload'] = array(
       '#prefix' => '<div style="display: none">',
       '#suffix' => '</div>',
     );
     $image_path = $form['#media']->uri;
-    $image_formats = array('wetkit_image_full', 'wetkit_image_half', 'wetkit_image_quarter');
+    $image_formats = array(
+      'wetkit_image_full',
+      'wetkit_image_half',
+      'wetkit_image_quarter',
+    );
     foreach ($image_formats as $format) {
       $form['preload'][$format] = array(
         '#markup' => theme('image', array('path' => image_style_url($format, $image_path))),
@@ -70,9 +81,11 @@ function wetkit_images_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Implementation of hook_file_displays_alter().
+ * Implements hook_file_displays_alter().
  *
- * This function is designed to readjust the width and height properties in the WYSIWYG.
+ * This function is designed to readjust the width and height
+ * properties in the WYSIWYG.
+ *
  * See this issue for more background - http://drupal.org/node/1801308.
  */
 function wetkit_images_file_displays_alter(&$displays, &$file, &$view_mode) {
@@ -85,15 +98,15 @@ function wetkit_images_file_displays_alter(&$displays, &$file, &$view_mode) {
 }
 
 /**
- * Implementation of hook_preprocess_image_style().
+ * Implements hook_preprocess_image_style().
  */
 function wetkit_images_preprocess_image_style(&$variables) {
   $variables['attributes']['class'][] = str_replace('_', '-', $variables['style_name']);
 }
 
 /**
-  * Implements hook_entity_info_alter().
-  */
+ * Implements hook_entity_info_alter().
+ */
 function wetkit_images_entity_info_alter(&$entity_info) {
   $entity_info['file']['view modes']['link'] = array(
     'label' => t('Link'),
