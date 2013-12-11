@@ -8,7 +8,19 @@
  * Implements hook_ctools_plugin_api().
  */
 function wetkit_images_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "breakpoints" && $api == "default_breakpoint_group") {
+    return array("version" => "1");
+  }
+  if ($module == "breakpoints" && $api == "default_breakpoints") {
+    return array("version" => "1");
+  }
   if ($module == "file_entity" && $api == "file_default_displays") {
+    return array("version" => "1");
+  }
+  if ($module == "picture" && $api == "default_picture_mapping") {
+    return array("version" => "1");
+  }
+  if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
 }
@@ -105,6 +117,54 @@ function wetkit_images_image_default_styles() {
       ),
     ),
     'label' => 'wetkit_image_half',
+  );
+
+  // Exported image style: wetkit_image_mobile.
+  $styles['wetkit_image_mobile'] = array(
+    'name' => 'wetkit_image_mobile',
+    'label' => 'wetkit_image_mobile',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 300,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: wetkit_image_narrow.
+  $styles['wetkit_image_narrow'] = array(
+    'name' => 'wetkit_image_narrow',
+    'label' => 'wetkit_image_narrow',
+    'effects' => array(
+      2 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 940,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
   );
 
   // Exported image style: wetkit_image_quarter.
@@ -222,6 +282,30 @@ function wetkit_images_image_default_styles() {
       ),
     ),
     'label' => 'wetkit_image_video',
+  );
+
+  // Exported image style: wetkit_image_wide.
+  $styles['wetkit_image_wide'] = array(
+    'name' => 'wetkit_image_wide',
+    'label' => 'wetkit_image_wide',
+    'effects' => array(
+      3 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 1180,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
   );
 
   return $styles;
