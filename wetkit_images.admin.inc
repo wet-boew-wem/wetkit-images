@@ -18,7 +18,7 @@ function wetkit_images_admin_settings($form, &$form_state) {
       PICTURE_IMPLEMENTATION_WEBLINC => 'weblinc',
       PICTURE_IMPLEMENTATION_WXT => 'wet-boew',
     ),
-    '#default_value' => variable_get('picture_implementation', PICTURE_IMPLEMENTATION_DEFAULT),
+    '#default_value' => variable_get('picture_implementation', PICTURE_IMPLEMENTATION_WXT),
   );
 
   return system_settings_form($form);
