@@ -48,3 +48,15 @@ function wetkit_images_uninstall() {
     }
   }
 }
+
+/**
+ * Picture + Breakpoints support for Images.
+ */
+function wetkit_images_update_7101() {
+  if (!module_exists('breakpoints')) {
+    module_enable(array('breakpoints'));
+  }
+  if (!module_exists('picture')) {
+    module_enable(array('picture'));
+  }
+}
