@@ -70,6 +70,7 @@ function wetkit_images_media_wysiwyg_allowed_view_modes_alter(&$options, $contex
 function wetkit_images_form_alter(&$form, &$form_state, $form_id) {
 
   // Remove some necessary image styles.
+  /**
   if ($form_id == 'ctools_entity_field_content_type_formatter_styles') {
     if (!empty($form['image_style']['#options'])) {
       $styles_to_remove = array(
@@ -112,6 +113,7 @@ function wetkit_images_form_alter(&$form, &$form_state, $form_id) {
       );
     }
   }
+  **/
 }
 
 /**
@@ -129,13 +131,6 @@ function wetkit_images_file_displays_alter(&$displays, &$file, &$view_mode) {
   if (!empty($file->override['attributes']['height'])) {
     $file->image_dimensions['height'] = $file->override['attributes']['height'];
   }
-}
-
-/**
- * Implements hook_preprocess_image_style().
- */
-function wetkit_images_preprocess_image_style(&$variables) {
-  $variables['attributes']['class'][] = str_replace('_', '-', $variables['style_name']);
 }
 
 /**
