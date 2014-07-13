@@ -5,9 +5,8 @@ core = 7.x
 
 ; Contrib
 
-projects[breakpoints][version] = 1.1
+projects[breakpoints][version] = 1.2
 projects[breakpoints][subdir] = contrib
 
-projects[picture][version] = 1.3
+projects[picture][version] = 2.4
 projects[picture][subdir] = contrib
-projects[picture][patch][2154259] = http://drupal.org/files/issues/undefined_libraries-2154259-01.patch
