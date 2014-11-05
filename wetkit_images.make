@@ -5,7 +5,7 @@ core = 7.x
 
 ; Contrib
 
-projects[breakpoints][version] = 1.2
+projects[breakpoints][version] = 1.3
 projects[breakpoints][subdir] = contrib
 
 projects[picture][version] = 2.x-dev
