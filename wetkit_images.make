@@ -7,7 +7,7 @@ core = 7.x
 
 projects[breakpoints][version] = 1.3
 projects[breakpoints][subdir] = contrib
-projects[breakpoints][patch][2378449] = http://drupal.org/files/issues/performance_issue_with-2378449-1.patch
+projects[breakpoints][patch][2378449] = http://drupal.org/files/issues/breakpoints-2415363.patch
 
 projects[picture][version] = 2.8
 projects[picture][subdir] = contrib
