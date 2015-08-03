@@ -7,7 +7,7 @@ core = 7.x
 
 projects[breakpoints][version] = 1.3
 projects[breakpoints][subdir] = contrib
-projects[breakpoints][patch][2378449] = http://drupal.org/files/issues/breakpoints-2415363.patch
+projects[breakpoints][patch][2378449] = http://drupal.org/files/issues/2415363-breakpoints-menu_rebuild-13.patch
 
 projects[picture][version] = 2.11
 projects[picture][subdir] = contrib
