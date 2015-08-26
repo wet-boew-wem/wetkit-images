@@ -18,25 +18,6 @@ function wetkit_images_page_build() {
 }
 
 /**
- * Implements hook_menu_alter().
- */
-function wetkit_images_menu_alter(&$items) {
-  // Adjust picture default arguments.
-  $items['admin/config/media/picture/settings'] = array(
-    'title' => 'Settings',
-    'type' => MENU_LOCAL_TASK,
-    'weight' => 20,
-    'description' => 'Pictures settings',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('wetkit_images_admin_settings'),
-    'access arguments' => array('administer pictures'),
-    'file' => 'wetkit_images.admin.inc',
-    'file path' => drupal_get_path('module', 'wetkit_images'),
-  );
-
-}
-
-/**
  * Implements hook_theme_registry_alter().
  */
 function wetkit_images_theme_registry_alter(&$theme_registry) {
